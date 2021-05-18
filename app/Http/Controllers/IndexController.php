@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function __invoke(){
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
         return view('home', ['posts' => $posts]);
     }
 }
