@@ -73,33 +73,35 @@
 
             <!-- Categories Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
+                <h5 class="card-header">Категории</h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
+                                @inject('categories', '\App\Category')
+                                @foreach($categories->show_categories() as $category)
                                 <li>
-                                    <a href="#">Web Design</a>
+                                    <a href="{{route('post_by_category', $category->key)}}">{{$category->title}}</a>
                                 </li>
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">Freebies</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                @inject('authors', '\App\Author')
+                <h5 class="card-header">Лучшие авторы из {{$authors->show_count()}}</h5>
+                <div class="card-body">
+                    <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tutorials</a>
-                                </li>
+                                @foreach($authors->show_authors() as $author)
+                                    <li>
+                                        <a href="{{route('post_by_author', $author->key)}}">{{$author->name}}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -108,9 +110,17 @@
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
+                <h5 class="card-header">Наши соц. сети</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    @inject('socials', '\App\Social')
+                    <ul class="list-unstyled mb-0">
+                    @foreach($socials->show_socials() as $social)
+                       <li>
+                           <img style="width: 25px; height: 25px" src="{{$social->icon_link}}">
+                           <a style="font-size:18px" href="{{$social->link}}">{{$social->title}}</a>
+                       </li>
+                    @endforeach
+                    </ul>
                 </div>
             </div>
 

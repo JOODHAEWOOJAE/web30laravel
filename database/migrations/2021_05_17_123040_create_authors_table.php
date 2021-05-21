@@ -17,6 +17,7 @@ class CreateAuthorsTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->string('name');
+            $table->integer('count_posts');
             $table->timestamps();
         });
     }
