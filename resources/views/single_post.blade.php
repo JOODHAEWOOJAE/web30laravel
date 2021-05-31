@@ -12,12 +12,17 @@
             <div class="card mb-4">
                 <img class="card-img-top" src="{{$post->image}}" alt="Card image cap">
                 <div class="card-body">
-                    <h2 class="card-title">{{$post->title}}</h2>
                     <p class="card-text">{{$post->body}}</p>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{$post->updated_at}} by
                     <a href="{{route('post_by_author', $post->author->key)}}">{{$post->author->name}}</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Категории:
+                    @foreach($post->category as $cat)
+                        <a href="{{route('post_by_category', $cat->key)}}" style="border: solid 1px lightgray; padding: 5px;">{{$cat->title}}</a>
+                    @endforeach
                 </div>
             </div>
         @if(Auth::check())
@@ -28,6 +33,7 @@
                 {{$comment->comment}}<br>
                 Добавлен: {{$comment->created_at}}
             @endforeach
+        @if(Auth::user()->role == 2)
             <form action="save_comment" method="post">
                 @csrf
                 <h3>Добавить комментарий</h3>
@@ -37,6 +43,7 @@
                 <br>
                 <button class="btn-save btn btn-primary btn-cm">Добавить комментарий</button>
             </form>
+            @endif
             @else
             <p>Войдите чтобы иметь возможность видеть комментарии и комментировать</p>
             @endif

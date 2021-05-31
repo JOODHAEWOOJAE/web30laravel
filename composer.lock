@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "10a038c4c88e5726bc3844c09c1f0760",
     "packages": [
+        {
+            "name": "cri2net/php-singleton",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cri2net/php-singleton.git",
+                "reference": "b3976d6e2385798c9c6cf63d32d6f9e679e342ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cri2net/php-singleton/zipball/b3976d6e2385798c9c6cf63d32d6f9e679e342ea",
+                "reference": "b3976d6e2385798c9c6cf63d32d6f9e679e342ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cri2net\\php_singleton\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Davidovich",
+                    "email": "cri2net@gmail.com"
+                }
+            ],
+            "description": "PHP Trait Singleton",
+            "support": {
+                "issues": "https://github.com/cri2net/php-singleton/issues",
+                "source": "https://github.com/cri2net/php-singleton/tree/1.0.1"
+            },
+            "time": "2020-02-04T10:50:37+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -1597,6 +1637,47 @@
                 "wiki": "https://github.com/ramsey/uuid/wiki"
             },
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "shvorobey/php-pdo-db",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shvorobey/PDO.git",
+                "reference": "66d20ed74e70ac340a2909e68d8d439c2fed9e14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shvorobey/PDO/zipball/66d20ed74e70ac340a2909e68d8d439c2fed9e14",
+                "reference": "66d20ed74e70ac340a2909e68d8d439c2fed9e14",
+                "shasum": ""
+            },
+            "require": {
+                "cri2net/php-singleton": "~1.0",
+                "php": "^5.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shvorobey\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Shvorobey",
+                    "email": "yunpp@ukr.net"
+                }
+            ],
+            "description": "PHP Class to work with the database using PDO",
+            "support": {
+                "issues": "https://github.com/Shvorobey/PDO/issues",
+                "source": "https://github.com/Shvorobey/PDO/tree/master"
+            },
+            "time": "2020-02-03T11:02:39+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
