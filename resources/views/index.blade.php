@@ -29,6 +29,9 @@
                 <a href="{{route('post_by_category', $cat->key)}}" style="border: solid 1px lightgray; padding: 5px;">{{$cat->title}}</a>
                 @endforeach
             </div>
+            <div class="card-footer text-muted">
+                Просмотры: {{$post->view}}
+            </div>
         </div>
         @endforeach
 

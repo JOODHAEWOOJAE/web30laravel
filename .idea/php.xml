@@ -89,6 +89,7 @@
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
       <path value="$PROJECT_DIR$/vendor/cri2net/php-singleton" />
       <path value="$PROJECT_DIR$/vendor/shvorobey/php-pdo-db" />
+      <path value="$PROJECT_DIR$/vendor/katzgrau/klogger" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

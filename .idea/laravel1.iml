@@ -94,6 +94,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cri2net/php-singleton" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/shvorobey/php-pdo-db" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/katzgrau/klogger" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

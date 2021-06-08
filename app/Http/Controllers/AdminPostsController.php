@@ -7,6 +7,8 @@ use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class AdminPostsController extends Controller
 {
@@ -49,6 +51,13 @@ class AdminPostsController extends Controller
 
                 $post->category()->sync($request->input('category_id'), false);
                 $post->category()->getRelated();
+
+                $log = new Logger('new');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/new_posts_log.log', Logger::INFO));
+                $log->info('Пользователь ' . Auth::user()->name . ' с email - ' . Auth::user()->email . ' добавил пост № '. $post->id . ' Заголовок поста - '. $post->title);
+
+                $logger = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../Logs');
+                $logger->info('Katzgrau : Пользователь ' . Auth::user()->name . ' добавил пост № ' . $post->id);
 
                 return redirect()->route('single_post', $post->id);
             }
@@ -93,6 +102,10 @@ class AdminPostsController extends Controller
                 }
                 $post->save();
 
+                $log = new Logger('new');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/edit_posts_log.log', Logger::INFO));
+                $log->info('Пользователь ' . Auth::user()->name . ' с email - ' . Auth::user()->email . ' изменил пост № '. $post->id . ' Заголовок поста - '. $post->title);
+
                 return redirect()->route('admin_post_get');
             }
         } else {
@@ -107,6 +120,12 @@ class AdminPostsController extends Controller
             if($request->method() == 'DELETE'){
                 $post = Post::find($request->input('id'));
                 $post->delete();
+
+
+                $log = new Logger('new');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/delete_posts_log.log', Logger::WARNING));
+                $log->warning('Пользователь ' . Auth::user()->name . ' с email - ' . Auth::user()->email . ' удалил пост № '. $post->id . ' Заголовок поста - '. $post->title);
+
                 return back();
             }else{
                 return view('Admin.admin_post', ['posts' => Post::orderBy('updated_at', 'DESC')->paginate(10)]);
