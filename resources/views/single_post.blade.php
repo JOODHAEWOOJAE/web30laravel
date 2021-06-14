@@ -5,6 +5,9 @@
 @section('content')
     <!-- Blog Entries Column -->
     <div class="col-md-8">
+        @if(\Session::has('flash'))
+            <p>{{\Session::get('flash')}}</p>
+        @endif
 
         <h1 class="my-4">{{$post->title}}</h1>
 

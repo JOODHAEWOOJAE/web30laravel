@@ -29,6 +29,7 @@ class AdminPostsController extends Controller
     {
         if (Auth::check()) {
             if ($request->method() == 'POST') {
+                //Post validation
                 $this->validate($request, [
                         'author_id' => 'required | numeric',
                         'title' => 'string | required | max:100 | min: 5',
@@ -59,6 +60,9 @@ class AdminPostsController extends Controller
                 $logger = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../Logs');
                 $logger->info('Katzgrau : Пользователь ' . Auth::user()->name . ' добавил пост № ' . $post->id);
 
+                \Session::flash('flash', 'Пост № ' . $post->id . ' успешно добавлен.');
+
+
                 return redirect()->route('single_post', $post->id);
             }
         } else {
@@ -71,8 +75,13 @@ class AdminPostsController extends Controller
         if (Auth::check()) {
             $post = Post::where('id', '=', $id)->first();
             $authors = Author::all();
+            $categories = Category::all();
 
-            return view('Admin.edit_post', ['post' => $post, 'authors' => $authors]);
+            return view('Admin.edit_post', [
+                'post' => $post,
+                'authors' => $authors,
+                'categories' => $categories
+            ]);
         } else {
             return redirect('404');
         }
@@ -101,6 +110,9 @@ class AdminPostsController extends Controller
                     $post->image = 'http://mylaravel1/images/' . $imageName;
                 }
                 $post->save();
+                $post->category()->getRelated();
+                $post->category()->sync($request->input('category_id'));
+                $post->category()->getRelated();
 
                 $log = new Logger('new');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/edit_posts_log.log', Logger::INFO));

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -129,6 +128,16 @@
                        </li>
                     @endforeach
                     </ul>
+                </div>
+            </div>
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Советуем почитать</h5>
+                <div class="card-body">
+                    @inject('posts', '\App\Post')
+                    @foreach($posts->getRandomPost() as $post)
+                        <a href="{{route('single_post', $post->id)}}">{{$post->title}}</a>
+                    @endforeach
                 </div>
             </div>
 
