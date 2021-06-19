@@ -17,6 +17,6 @@ class Post extends Model
     }
 
     public function getRandomPost(){
-        return Post::inRandomOrder()->limit(1)->get();
+        return Post::inRandomOrder()->limit(3)->get();
     }
 }

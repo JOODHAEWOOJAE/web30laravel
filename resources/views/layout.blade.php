@@ -22,7 +22,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{route('Index')}}">Sinyakov</a>
+        <a class="navbar-brand" href="{{route('Index')}}">vetka2</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -136,7 +136,7 @@
                 <div class="card-body">
                     @inject('posts', '\App\Post')
                     @foreach($posts->getRandomPost() as $post)
-                        <a href="{{route('single_post', $post->id)}}">{{$post->title}}</a>
+                        <a href="{{route('single_post', $post->id)}}">{{$post->title}}</a><br>
                     @endforeach
                 </div>
             </div>
@@ -152,7 +152,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Best Website 2021</p>
+        <p class="m-0 text-center text-white">Это тестовая версия сайта</p>
     </div>
     <!-- /.container -->
 </footer>

@@ -8,8 +8,8 @@
     <div class="col-md-8">
         <h1 class="my-4">OUR SERVICES</h1>
         <ul>
-            <li>php</li>
-            <li>html</li>
+            <li>тестировать код</li>
+            <li>делать изменения в коде</li>
             <li>css</li>
             <li>JS</li>
         </ul>
