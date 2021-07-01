@@ -53,6 +53,12 @@ Route::get('/cart/delete/{id}', 'CartAction@delete')->name('delete_from_cart');
 
 Route::post('/cart/update', 'CartAction@update')->name('update_cart');
 
+Route::get('/cart/checkout', function (){return view('checkout');})->name('checkout');
+
+Route::post('/cart/checkout', '\\' . \App\Http\Controllers\OrderController::class)->name('checkout');
+
+Route::get('/order/{id}', '\\' . \App\Http\Controllers\OrderReceivedController::class)->name('order');
+
 
 // AUTH
 Auth::routes();

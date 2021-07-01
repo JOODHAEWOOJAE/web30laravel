@@ -10,6 +10,7 @@
 
     <!-- Blog Post -->
         <div class="card mb-4">
+            @if(!Cart::isEmpty())
             <form id="checkout" method="post" action="{{route('update_cart')}}">
                 @csrf
             <table border="1">
@@ -23,7 +24,6 @@
                     <th>Итого</th>
                     <th>Удалить</th>
                 </tr>
-                @if(!Cart::isEmpty())
                     @foreach(\Cart::getContent() as $post)
                 <tr>
                     <td>{{$post->id}}</td>
@@ -42,11 +42,26 @@
                     </td>
                 </tr>
                     @endforeach
-                @endif
+                    <tr>
+                        <td colspan="4" style="text-align: right">Итого: </td>
+                        <td style="background-color:silver; font-weight: bold">
+                            {{\Cart::getTotalQuantity()}}
+                        </td>
+                        <td style="background-color:gold; font-weight: bold">{{\Cart::getTotal()}}</td>
+                        <td>
+                        </td>
+                    </tr>
             </table>
-                <a href="#" class="btn btn-primary"
-                    onclick="document.getElementById('checkout').submit()">Обновить корзину</a>
+                <div style="text-align: right">
+                    <a href="#" class="btn btn-primary"
+                       onclick="document.getElementById('checkout').submit()">Обновить корзину</a>
+                </div>
             </form>
+            <br>
+            <a href="{{route('checkout')}}" class="btn btn-primary">Перейти к оформлению заказа</a>
+            @else
+                <h2>Ваша коризна пуста</h2>
+            @endif
         </div>
     </div>
 
